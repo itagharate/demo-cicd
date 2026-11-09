@@ -1,0 +1,24 @@
+# Nom affiché dans l'onglet "Actions" de GitHub
+name: CI
+
+# QUAND lancer le pipeline
+on:
+  push:
+    branches: [main]      # à chaque push sur main
+  pull_request:           # et à chaque pull request
+
+# QUOI faire
+jobs:
+  test:                         # nom du job
+    runs-on: ubuntu-latest      # GitHub prête une machine Ubuntu neuve
+    steps:
+      # 1. Télécharger le code du dépôt sur cette machine
+      - uses: actions/checkout@v4
+
+      # 2. Installer Node 22
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 3. Lancer les tests (si ça échoue, le job passe au rouge)
+      - run: npm test
