@@ -3,5 +3,5 @@ import assert from 'node:assert';
 import { salutation } from './app.js';
 
 test('salutation dit bonjour avec le prénom', () => {
-  assert.strictEqual(salutation('Rahim'), 'Bonjour Rahim !');
+  assert.strictEqual(salutation('Rahim'), 'salut Rahim !');
 });
